@@ -9,7 +9,7 @@ node_modules/
 *.log
 
 # Продуктовые файлы
-*.env
+
 
 # Системные файлы
 .DS_Store
