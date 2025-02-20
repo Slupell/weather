@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Директории и файлы, связанные с билдом
+/dist/
+/build/
+
+# Логи
+*.log
+
+# Продуктовые файлы
+*.env
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# IDE файлы
+.vscode/
+.idea/
+*.sublime-workspace
