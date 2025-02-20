@@ -9,14 +9,12 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { WeatherData } from "../types";
+import { WeatherChartProps } from "../types";
 
-interface WeatherChartProps {
-  data: WeatherData[];
-  dataKey: string;
-}
-
-const WeatherChart: React.FC<WeatherChartProps> = ({ data, dataKey }) => {
+export const WeatherChart: React.FC<WeatherChartProps> = ({
+  data,
+  dataKey,
+}) => {
   const chartData = data.flatMap((weatherData) =>
     weatherData.data.map((item) => ({
       ...item,
@@ -52,5 +50,3 @@ const WeatherChart: React.FC<WeatherChartProps> = ({ data, dataKey }) => {
     </ResponsiveContainer>
   );
 };
-
-export default WeatherChart;

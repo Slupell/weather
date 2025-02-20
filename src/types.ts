@@ -22,3 +22,12 @@ export interface WeatherData {
     pop: number;
   }[];
 }
+
+export interface CityInputProps {
+  onCitySubmit: (city: string) => void;
+  addedCities: string[];
+}
+export interface WeatherChartProps {
+  data: WeatherData[];
+  dataKey: string;
+}
