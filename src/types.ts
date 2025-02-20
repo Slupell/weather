@@ -31,3 +31,8 @@ export interface WeatherChartProps {
   data: WeatherData[];
   dataKey: string;
 }
+
+export interface WeatherDataOptionsProps {
+  selectedValue: string;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
