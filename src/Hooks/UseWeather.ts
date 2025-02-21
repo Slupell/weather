@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { WeatherData } from "../types";
-import { fetchCityCoordinates, fetchWeatherForecast } from "../Api/index";
+import { fetchCityCoordinates, fetchWeatherForecast } from "../Api/Index";
 
 export const UseWeather = (addedCities: string[]) => {
   const [weatherDataList, setWeatherDataList] = useState<WeatherData[]>([]);
