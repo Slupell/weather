@@ -1,11 +1,8 @@
 import { useState } from "react";
-import axios from "axios";
 import { WeatherData } from "../types";
+import { fetchCityCoordinates, fetchWeatherForecast } from "../Api/index";
 
-export const useWeather = (addedCities: string[]) => {
-  const apiKey = import.meta.env.VITE_WEATHERMAP_API_KEY;
-  const baseUrl = import.meta.env.VITE_BASE_WEATHER_URL;
-
+export const UseWeather = (addedCities: string[]) => {
   const [weatherDataList, setWeatherDataList] = useState<WeatherData[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -20,24 +17,12 @@ export const useWeather = (addedCities: string[]) => {
     setError(null);
 
     try {
-      const geocodeResponse = await axios.get(`${baseUrl}/geo/1.0/direct`, {
-        params: { q: city, limit: 1, appid: apiKey },
-      });
-
-      if (!geocodeResponse.data.length) {
-        setError("City not found.");
-        return;
-      }
-
-      const { lat, lon } = geocodeResponse.data[0];
-
-      const weatherResponse = await axios.get(`${baseUrl}/data/2.5/forecast`, {
-        params: { lat, lon, appid: apiKey, units: "metric" },
-      });
+      const { lat, lon } = await fetchCityCoordinates(city);
+      const weatherData = await fetchWeatherForecast(lat, lon);
 
       const newWeatherData: WeatherData = {
         city,
-        data: weatherResponse.data.list,
+        data: weatherData,
       };
 
       setWeatherDataList((prev) => [...prev, newWeatherData]);

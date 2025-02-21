@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { CityInput } from "./components/CityInput";
 import { WeatherChart } from "./components/WeatherChart";
-import { useWeather } from "./Hooks/UseWeather";
+import { UseWeather } from "./Hooks/UseWeather";
 import { WeatherDataOptions } from "./components/WeatherDataOptions";
 
 const App: React.FC = () => {
   const [addedCities, setAddedCities] = useState<string[]>([]);
   const { weatherDataList, fetchWeatherData, removeCity, loading, error } =
-    useWeather(addedCities);
+    UseWeather(addedCities);
   const [dataKey, setDataKey] = useState<string>("main.temp");
   const handleCitySubmit = (city: string) => {
     setAddedCities((prev) => [...prev, city]);
